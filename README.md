@@ -2,7 +2,7 @@
 Alamofire + Retrofit
 
 # Goal
-(design reference)[https://square.github.io/retrofit/#restadapter-configuration]
+(API Design Reference)[https://square.github.io/retrofit/#restadapter-configuration]
 
 ```
 @GET("group/{id}/users")
@@ -27,12 +27,12 @@ func updateUser(@Part("photo") photo: RequestBody, @Part("description") descript
 
 @Headers("Cache-Control: max-age=640000")
 @GET("widget/list")
-func widgetList() -> [Widget]
+func widgetList() async -> [Widget]
 
-@Headers({
+@Headers([
     "Accept: application/vnd.github.v3.full+json",
     "User-Agent: Retrofit-Sample-App"
-})
+])
 @GET("users/{username}")
 func getUser(@Path("username") username: String) async -> User
 
