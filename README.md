@@ -2,7 +2,7 @@
 Alamofire + Retrofit
 
 # Goal
-(API Design Reference)[https://square.github.io/retrofit/#restadapter-configuration]
+[API Design Reference](https://square.github.io/retrofit/#restadapter-configuration)
 
 ```
 @GET("group/{id}/users")
