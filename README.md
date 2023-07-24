@@ -1,6 +1,7 @@
 # Retrofire
 Alamofire + Retrofit
-Alamofire Macro 
+
+Alamofire `Macro` declare layer
 
 # Goal
 [API Design Reference](https://square.github.io/retrofit/#restadapter-configuration)
