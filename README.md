@@ -1,5 +1,6 @@
 # Retrofire
 Alamofire + Retrofit
+Alamofire Macro 
 
 # Goal
 [API Design Reference](https://square.github.io/retrofit/#restadapter-configuration)
@@ -12,24 +13,24 @@ func groupList(@Path("id") groupId: Int) async -> [User]
 func groupList(@Path("id") groupId: Int, @Query("sort") sort: String) async -> [User]
 
 @GET("group/{id}/users")
-func groupList(@Path("id") groupId: Int, @Query options: [String: String]) async -> [User]
+func groupList(@Path("id") groupId: Int, @Query() options: [String: String]) async -> [User]
 
 @POST("users/new")
-func createUser(@Body user: User) -> User
+func createUser(@Query() user: User) -> User
 
 @FormUrlEncoded
 @POST("user/edit")
-func updateUser(@Field("first_name") first: String, @Field("last_name") last: String) async -> User
+func updateUser(@Query("first_name") first: String, @Query("last_name") last: String) async -> User
 
 @Multipart
 @PUT("user/photo")
-func updateUser(@Part("photo") photo: RequestBody, @Part("description") description: RequestBody) async -> User
+func updateUser(@Query("photo") photo: RequestBody, @Query("description") description: RequestBody) async -> User
 
-@Headers("Cache-Control: max-age=640000")
+@Header("Cache-Control: max-age=640000")
 @GET("widget/list")
 func widgetList() async -> [Widget]
 
-@Headers([
+@Header([
     "Accept: application/vnd.github.v3.full+json",
     "User-Agent: Retrofit-Sample-App"
 ])
@@ -40,5 +41,24 @@ func getUser(@Path("username") username: String) async -> User
 func getUser(@Header("Authorization") authorization: String) async -> User
 
 @GET("user")
-func getUser(@HeaderMap headers: [String: String]) async -> User
+func getUser(@Header() headers: [String: String]) async -> User
 ```
+
+**Simplify**
+* @Field -> @Query
+* @Part -> @Query
+* @QueryMap -> @Query
+* @Body -> @Query
+* @HeaderMap -> @Header
+* @Headers -> @Header
+
+**Keywords**
+* @GET
+* @POST
+* @PUT
+* @DELETE
+* @Multipart
+* @FormUrlEncoded
+* @Path
+* @Query
+* @Header
